@@ -56,12 +56,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Todo" id="Lew-V3-5Yq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kTj-0I-8Ew"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kTj-0I-8Ew">
+                            <connections>
+                                <segue destination="9z1-ay-Q5I" kind="presentation" identifier="openAddItemSegue" id="BeQ-uF-8RO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="125.89285714285714"/>
+            <point key="canvasLocation" x="965" y="771"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oJD-fD-C3Y">
@@ -80,6 +84,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJR-xa-IYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134.78260869565219" y="770.75892857142856"/>
+        </scene>
+        <!--Add new item-->
+        <scene sceneID="q1H-Ed-p0j">
+            <objects>
+                <viewController id="o5c-ss-7sV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H74-6T-WMU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OlT-Lj-rAg"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add new item" id="c1h-hg-YoZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="F2i-Ls-Yfp"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="CfA-V9-PeG"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmO-XE-v2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2884" y="771"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Uc-GX-OTF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9z1-ay-Q5I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Owy-cr-nja">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o5c-ss-7sV" kind="relationship" relationship="rootViewController" id="fL7-sG-MON"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0QF-1s-Y2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="771"/>
         </scene>
     </scenes>
 </document>
