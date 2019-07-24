@@ -14,6 +14,7 @@
 		E48CCBA3226244E00012474B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48CCBA1226244E00012474B /* Main.storyboard */; };
 		E48CCBA5226244E20012474B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48CCBA4226244E20012474B /* Assets.xcassets */; };
 		E48CCBA8226244E20012474B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48CCBA6226244E20012474B /* LaunchScreen.storyboard */; };
+		E4E6D2B822E86B8A00F2E534 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6D2B722E86B8A00F2E534 /* AddNewItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E48CCBA4226244E20012474B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E48CCBA7226244E20012474B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E48CCBA9226244E20012474B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4E6D2B722E86B8A00F2E534 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E48CCBA9226244E20012474B /* Info.plist */,
 				E4084C4522E322C9007ACB47 /* Todo.swift */,
 				E4084C4722E3249E007ACB47 /* TodoItem.swift */,
+				E4E6D2B722E86B8A00F2E534 /* AddNewItemViewController.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				E48CCBA0226244E00012474B /* ViewController.swift in Sources */,
 				E4084C4622E322C9007ACB47 /* Todo.swift in Sources */,
 				E4084C4822E3249E007ACB47 /* TodoItem.swift in Sources */,
+				E4E6D2B822E86B8A00F2E534 /* AddNewItemViewController.swift in Sources */,
 				E48CCB9E226244E00012474B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
