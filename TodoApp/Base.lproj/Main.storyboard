@@ -142,6 +142,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="isDoneSwitch" destination="mwT-qM-AT6" id="2dI-c3-gHu"/>
+                        <outlet property="titleTextField" destination="7wz-ww-oHx" id="Tvv-9H-moX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmO-XE-v2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
