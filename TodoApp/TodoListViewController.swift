@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITableViewDragDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
     
     var todo = Todo()
     @IBOutlet weak var tableView: UITableView?
@@ -39,12 +39,19 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
     // MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
         todo.add(item: TodoItem(title: "Download XCode", isDone: true))
         todo.add(item: TodoItem(title: "Buy milk"))
         todo.add(item: TodoItem(title: "Learning Swift"))
+        
+        tableView?.dragDelegate = self
+        tableView?.dragInteractionEnabled = true
     }
     
     // MARK: - ItemDetailViewControllerDelegate
