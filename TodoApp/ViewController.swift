@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "openEditItemSegue", sender: todo.item(at: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -55,16 +56,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         controller.dismiss(animated: true, completion: nil)
     }
     
+    func addNewItemViewController(controller: AddNewItemViewController, didEdit item: TodoItem) {
+        if let index = todo.index(of: item) {
+            tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     func addNewItemViewControllerDidCancel(controller: AddNewItemViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openAddItemSegue" {
             if let nav = segue.destination as? UINavigationController,
                 let controller = nav.topViewController as? AddNewItemViewController {
                 controller.delegate = self
+                
+                if segue.identifier == "openEditItemSegue" {
+                    controller.todoItem = sender as? TodoItem
+                }
             }
-        }
     }
 }
