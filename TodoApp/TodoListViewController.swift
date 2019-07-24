@@ -13,6 +13,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     var todo = Todo()
     @IBOutlet weak var tableView: UITableView?
     
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItems
     }
@@ -25,6 +26,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "openEditItemSegue", sender: todo.item(at: indexPath.row))
@@ -36,14 +38,16 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-
+    
+    // MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
         todo.add(item: TodoItem(title: "Download XCode", isDone: true))
         todo.add(item: TodoItem(title: "Buy milk"))
         todo.add(item: TodoItem(title: "Learning Swift"))
     }
-
+    
+    // MARK: - ItemDetailViewControllerDelegate
     func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         
@@ -66,6 +70,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         controller.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - TodoItemTableViewCellDelegate
     func todoItemTableViewCellDidTapCheckboxButton(cell: TodoItemTableViewCell) {
         if let indexPath = tableView?.indexPath(for: cell) {
             todo.item(at: indexPath.row).isDone.toggle()
@@ -73,6 +78,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if let nav = segue.destination as? UINavigationController,
                 let controller = nav.topViewController as? ItemDetailViewController {
