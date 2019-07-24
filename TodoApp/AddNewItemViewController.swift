@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol AddNewItemViewControllerDelegate: class {
+    func addNewItemViewController(controller: AddNewItemViewController, didAdd item: TodoItem)
+    func addNewItemViewControllerDidCancel(controller: AddNewItemViewController)
+}
+
 class AddNewItemViewController: UIViewController {
+    weak var delegate: AddNewItemViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +23,11 @@ class AddNewItemViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
-        print("done")
+        delegate?.addNewItemViewController(controller: self, didAdd: TodoItem(title: "Test"))
     }
     
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        print("cancel")
+        delegate?.addNewItemViewControllerDidCancel(controller: self)
     }
     
     /*
