@@ -63,11 +63,15 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
         
-        controller.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        if controller.isInEditMode {
+            navigationController?.popViewController(animated: true)
+        } else {
+            controller.dismiss(animated: true, completion: nil)
+        }
     }
     
     // MARK: - TodoItemTableViewCellDelegate
@@ -80,13 +84,18 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "openAddItemSegue":
             if let nav = segue.destination as? UINavigationController,
                 let controller = nav.topViewController as? ItemDetailViewController {
                 controller.delegate = self
-                
-                if segue.identifier == "openEditItemSegue" {
-                    controller.todoItem = sender as? TodoItem
-                }
             }
+        case "openEditItemSegue":
+            if let controller = segue.destination as? ItemDetailViewController {
+                controller.delegate = self
+                controller.todoItem = sender as? TodoItem
+            }
+        default: break
+        }
     }
 }
