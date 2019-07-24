@@ -11,7 +11,6 @@ import UIKit
 class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
     
     var todo = Todo()
-    
     @IBOutlet weak var tableView: UITableView?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

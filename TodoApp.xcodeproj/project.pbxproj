@@ -62,18 +62,42 @@
 		E48CCB9C226244E00012474B /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
-				E48CCB9D226244E00012474B /* AppDelegate.swift */,
+				E4ECCA8322E89E15002D9FD4 /* Supporting Files */,
+				E4ECCA8222E89E00002D9FD4 /* View */,
+				E4ECCA8122E89DEB002D9FD4 /* Model */,
 				E48CCB9F226244E00012474B /* TodoListViewController.swift */,
 				E48CCBA1226244E00012474B /* Main.storyboard */,
-				E48CCBA4226244E20012474B /* Assets.xcassets */,
-				E48CCBA6226244E20012474B /* LaunchScreen.storyboard */,
-				E48CCBA9226244E20012474B /* Info.plist */,
-				E4084C4522E322C9007ACB47 /* Todo.swift */,
-				E4084C4722E3249E007ACB47 /* TodoItem.swift */,
 				E4E6D2B722E86B8A00F2E534 /* ItemDetailViewController.swift */,
-				E4ECCA7F22E891CC002D9FD4 /* TodoItemTableViewCell.swift */,
 			);
 			path = TodoApp;
+			sourceTree = "<group>";
+		};
+		E4ECCA8122E89DEB002D9FD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4084C4522E322C9007ACB47 /* Todo.swift */,
+				E4084C4722E3249E007ACB47 /* TodoItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E4ECCA8222E89E00002D9FD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4ECCA7F22E891CC002D9FD4 /* TodoItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E4ECCA8322E89E15002D9FD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E48CCBA6226244E20012474B /* LaunchScreen.storyboard */,
+				E48CCBA9226244E20012474B /* Info.plist */,
+				E48CCBA4226244E20012474B /* Assets.xcassets */,
+				E48CCB9D226244E00012474B /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FZSS696BGX;
-				INFOPLIST_FILE = TodoApp/Info.plist;
+				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FZSS696BGX;
-				INFOPLIST_FILE = TodoApp/Info.plist;
+				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
