@@ -113,7 +113,7 @@
         <!--Add new item-->
         <scene sceneID="q1H-Ed-p0j">
             <objects>
-                <viewController id="o5c-ss-7sV" customClass="AddNewItemViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="o5c-ss-7sV" customClass="ItemDetailViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H74-6T-WMU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -45,7 +45,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         todo.add(item: TodoItem(title: "Learning Swift"))
     }
 
-    func addNewItemViewController(controller: AddNewItemViewController, didAdd item: TodoItem) {
+    func addNewItemViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         
         if let index = todo.index(of: item) {
@@ -55,7 +55,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func addNewItemViewController(controller: AddNewItemViewController, didEdit item: TodoItem) {
+    func addNewItemViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
         if let index = todo.index(of: item) {
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
@@ -63,7 +63,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func addNewItemViewControllerDidCancel(controller: AddNewItemViewController) {
+    func addNewItemViewControllerDidCancel(controller: ItemDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
     
@@ -76,7 +76,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if let nav = segue.destination as? UINavigationController,
-                let controller = nav.topViewController as? AddNewItemViewController {
+                let controller = nav.topViewController as? ItemDetailViewController {
                 controller.delegate = self
                 
                 if segue.identifier == "openEditItemSegue" {
