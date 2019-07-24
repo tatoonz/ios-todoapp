@@ -92,7 +92,39 @@
                     <view key="view" contentMode="scaleToFill" id="H74-6T-WMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YF6-vC-CM6">
+                                <rect key="frame" x="15" y="118" width="384" height="69"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7wz-ww-oHx">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJq-ZW-YJr">
+                                        <rect key="frame" x="0.0" y="38" width="384" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODv-af-P7F">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mwT-qM-AT6">
+                                                <rect key="frame" x="335" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YF6-vC-CM6" firstAttribute="top" secondItem="OlT-Lj-rAg" secondAttribute="top" constant="30" id="PSe-NE-hLq"/>
+                            <constraint firstItem="YF6-vC-CM6" firstAttribute="leading" secondItem="OlT-Lj-rAg" secondAttribute="leading" constant="15" id="RlJ-kl-sRp"/>
+                            <constraint firstItem="OlT-Lj-rAg" firstAttribute="trailing" secondItem="YF6-vC-CM6" secondAttribute="trailing" constant="15" id="uOn-5t-epZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OlT-Lj-rAg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add new item" id="c1h-hg-YoZ">
@@ -102,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmO-XE-v2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2884" y="771"/>
+            <point key="canvasLocation" x="2882.608695652174" y="770.75892857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Uc-GX-OTF">
