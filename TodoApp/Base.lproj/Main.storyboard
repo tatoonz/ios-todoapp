@@ -39,6 +39,9 @@
                                                                 <constraint firstAttribute="width" constant="35.5" id="EfZ-FR-qXa"/>
                                                             </constraints>
                                                             <state key="normal" image="check"/>
+                                                            <connections>
+                                                                <action selector="checkboxButtonDidTap" destination="Z3h-sn-O2K" eventType="touchUpInside" id="vMj-k9-5OI"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-od-uba">
                                                             <rect key="frame" x="43.5" y="0.0" width="302.5" height="35.5"/>
