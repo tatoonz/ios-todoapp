@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ItemDetailViewControllerDelegate: class {
-    func addNewItemViewController(controller: ItemDetailViewController, didAdd item: TodoItem)
-    func addNewItemViewController(controller: ItemDetailViewController, didEdit item: TodoItem)
-    func addNewItemViewControllerDidCancel(controller: ItemDetailViewController)
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem)
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem)
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController)
 }
 
 class ItemDetailViewController: UIViewController {
@@ -49,15 +49,15 @@ class ItemDetailViewController: UIViewController {
         if let todoItem = todoItem {
             todoItem.title = title
             todoItem.isDone = isDoneSwitch.isOn
-            delegate?.addNewItemViewController(controller: self, didEdit: todoItem)
+            delegate?.itemDetailViewController(controller: self, didEdit: todoItem)
         } else {
             let todoItem = TodoItem(title: title, isDone: isDoneSwitch.isOn)
-            delegate?.addNewItemViewController(controller: self, didAdd: todoItem)
+            delegate?.itemDetailViewController(controller: self, didAdd: todoItem)
         }
     }
     
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        delegate?.addNewItemViewControllerDidCancel(controller: self)
+        delegate?.itemDetailViewControllerDidCancel(controller: self)
     }
     
     /*

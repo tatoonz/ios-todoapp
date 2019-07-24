@@ -45,7 +45,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         todo.add(item: TodoItem(title: "Learning Swift"))
     }
 
-    func addNewItemViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         
         if let index = todo.index(of: item) {
@@ -55,7 +55,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func addNewItemViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
         if let index = todo.index(of: item) {
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
@@ -63,7 +63,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func addNewItemViewControllerDidCancel(controller: ItemDetailViewController) {
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
     
