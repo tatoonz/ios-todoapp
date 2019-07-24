@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITableViewDragDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITableViewDragDelegate, UITableViewDropDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
     
     var todo = Todo()
     @IBOutlet weak var tableView: UITableView?
@@ -24,6 +24,14 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.configure(item: item, delegate: self)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        todo.move(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
     // MARK: - UITableViewDelegate
@@ -43,6 +51,18 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         return [UIDragItem(itemProvider: NSItemProvider())]
     }
     
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return session.localDragSession != nil
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
     // MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +72,8 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tableView?.dragDelegate = self
         tableView?.dragInteractionEnabled = true
+        
+        tableView?.dropDelegate = self
     }
     
     // MARK: - ItemDetailViewControllerDelegate
