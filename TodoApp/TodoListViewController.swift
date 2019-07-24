@@ -44,6 +44,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         if editingStyle == .delete {
             todo.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            saveTodo()
         }
     }
     
@@ -66,14 +67,12 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo.add(item: TodoItem(title: "Download XCode", isDone: true))
-        todo.add(item: TodoItem(title: "Buy milk"))
-        todo.add(item: TodoItem(title: "Learning Swift"))
-        
         tableView?.dragDelegate = self
         tableView?.dragInteractionEnabled = true
         
         tableView?.dropDelegate = self
+        
+        loadTodo()
     }
     
     // MARK: - ItemDetailViewControllerDelegate
@@ -82,6 +81,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         if let index = todo.index(of: item) {
             tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            saveTodo()
         }
         
         controller.dismiss(animated: true, completion: nil)
@@ -90,6 +90,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
         if let index = todo.index(of: item) {
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            saveTodo()
         }
         
         navigationController?.popViewController(animated: true)
@@ -107,6 +108,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     func todoItemTableViewCellDidTapCheckboxButton(cell: TodoItemTableViewCell) {
         if let indexPath = tableView?.indexPath(for: cell) {
             todo.item(at: indexPath.row).isDone.toggle()
+            saveTodo()
             tableView?.reloadRows(at: [indexPath], with: .automatic)
         }
     }
@@ -126,5 +128,44 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         default: break
         }
+    }
+    
+    // MARK: Save/Load todos
+    func saveTodo() {
+        do {
+            let destinationURL = try makeTodoFileURL(fileManager: FileManager.default)
+            
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            
+            let data = try encoder.encode(todo)
+            try data.write(to: destinationURL)
+        } catch {
+            print("cannot save todo to file, Error: \(error)")
+        }
+    }
+    
+    func loadTodo() {
+        do {
+            let fileManager = FileManager.default
+            let destinationURL = try makeTodoFileURL(fileManager: fileManager)
+            
+            if fileManager.fileExists(atPath: destinationURL.path) {
+                let data = try Data(contentsOf: destinationURL)
+                let decoder = PropertyListDecoder()
+                todo = try decoder.decode(Todo.self, from: data)
+                tableView?.reloadData()
+            }
+        } catch {
+            print("cannot load todo from file, Error: \(error)")
+        }
+    }
+    
+    func makeTodoFileURL(fileManager: FileManager) throws -> URL {
+        var destinationURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        destinationURL.appendPathComponent("todo")
+        destinationURL.appendPathExtension("plist")
+        
+        return destinationURL
     }
 }
